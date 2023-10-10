@@ -22,12 +22,22 @@ func flyerHandler(ctx *gin.Context) {
 	if err := logsFile(ctx, "Request Flyer"); err != nil {
 		log.Panic(err)
 	}
+
+	ctx.JSON(200, map[string]string{
+		"status": "success",
+		"path":   ctx.Request.RequestURI,
+	})
 }
 
 func OperationHandler(ctx *gin.Context) {
 	if err := logsFile(ctx, "Request Operation"); err != nil {
 		log.Panic(err)
 	}
+
+	ctx.JSON(200, map[string]string{
+		"status": "success",
+		"path":   ctx.Request.RequestURI,
+	})
 }
 
 func logsFile(ctx *gin.Context, action string) error {
